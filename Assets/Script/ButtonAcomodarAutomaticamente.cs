@@ -68,16 +68,22 @@ public class ButtonAcomodarAutomaticamente : MonoBehaviour
 
     public void AcomodarBarcosDeformaAleatoria()
     {
-        int numeroAleatorio = 0;
-        listaDeNumeros.Clear();
-        //tendria que tomar aleatoriamente 5 posiciones de la grilla
-        for (int i = 0; i < cantidadNumerosAletorios; i++)
+        
+        int numeroAleatorio = 0;//variable que va a guardar el numero aleatorio
+
+        listaDeNumeros.Clear();//borro todo lo de la lista guardado antereriormente
+       
+        //While hasta que se complete la cantida de números aleatorios sin repetir
+        while(listaDeNumeros.Count < cantidadNumerosAletorios)
         {
-            // numeroAleatorio = Random.Range(0,cuadriculas.Length);
-            numeroAleatorio = Random.Range(0,10);
-            // listaDeNumeros[i] = numeroAleatorio;
-            listaDeNumeros.Add(numeroAleatorio);
+            numeroAleatorio = Random.Range(0,10); //numero aleatorio en un rango
+
+            if(!listaDeNumeros.Contains(numeroAleatorio))//si ese número NO esta
+            {
+                listaDeNumeros.Add(numeroAleatorio);//Agrego a la lista
+            }        
         }  
     }
+
 
 }
