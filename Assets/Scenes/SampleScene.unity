@@ -329,6 +329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a436ae372f97514ba5754a3c136c4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantidadNumerosAletorios: 8
+  listaDeNumeros: 
+  listaDeNumerosQueHay: 0000000000000000000000000000000000000000
 --- !u!1 &225798219
 GameObject:
   m_ObjectHideFlags: 0
