@@ -68,10 +68,20 @@ public class BotonAcomodarBarcos : MonoBehaviour
     public void AcomodarBarcosDeformaAleatoria()
     {
         listaDeNumeros.Clear();
-        int[] numeros = CrearNumerosAleatoriosSinRepetir(cantidadNumeros,rangoNumeros);
+        int[] numeros = CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
+
         foreach (int i in numeros)
         {
             listaDeNumeros.Add(i);
+        }
+        for (int i = 0; i < barcos.Length; i++)
+        {
+            barcos[i].transform.position = new Vector3(
+                cuadriculas[numeros[i]].transform.position.x,
+                barcos[i].transform.position.y,
+                cuadriculas[numeros[i]].transform.position.z
+            );
+            
         }
     }
 
