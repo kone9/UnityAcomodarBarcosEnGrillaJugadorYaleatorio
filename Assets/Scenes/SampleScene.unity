@@ -326,12 +326,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 222778110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a436ae372f97514ba5754a3c136c4d0, type: 3}
+  m_Script: {fileID: 11500000, guid: b15dbc2baf0b7b744b59ed127493e1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cantidadNumerosAletorios: 8
+  cantidadNumeros: 5
+  rangoNumeros: 10
   listaDeNumeros: 
-  listaDeNumerosQueHay: 0000000000000000000000000000000000000000
 --- !u!1 &225798219
 GameObject:
   m_ObjectHideFlags: 0
