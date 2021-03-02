@@ -7,7 +7,11 @@ public class MoverYrotar : MonoBehaviour
 
     GameHandler _GameHandler;
 
-    public int lengthBarco;
+    public int lengthBarco;//tamaño de arriba abajo del barco
+
+    public int lenghtBarcoDerecha;//tamaño hacia la derecha del barco
+    
+    public int lenghtBarcoIzquierda;//tamaño hacia la izquierda del barco
 
     public int direccion = 0;
 
@@ -41,7 +45,7 @@ public class MoverYrotar : MonoBehaviour
         //la posición imaginaria de la grilla en el eje "X" y en el eje "Y"..."El eje Y es el Z" nose si corrija ese detalle,no me molesta
         X_posicion_imaginaria = _GameHandler.grillaActual.GetComponent<CuadriculaDeColision>().Grilla_X_posicion;
         Y_posicion_imaginaria = _GameHandler.grillaActual.GetComponent<CuadriculaDeColision>().Grilla_Y_posicion;
-        if ( _GameHandler.inGrid(lengthBarco,direccion,X_posicion_imaginaria,Y_posicion_imaginaria) )
+        if ( _GameHandler.inGrid(lengthBarco, lenghtBarcoDerecha , lenghtBarcoIzquierda , direccion,X_posicion_imaginaria,Y_posicion_imaginaria) )
         {
             this.gameObject.transform.position = new Vector3(
                 _GameHandler.grillaActual.transform.position.x,

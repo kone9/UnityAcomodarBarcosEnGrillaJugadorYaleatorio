@@ -19,7 +19,7 @@ public class GameHandler : MonoBehaviour
     public GameObject grillaActual;
 
     //si estoy dentro de la grilla solo puedo mover
-    public bool inGrid(int length, int dir, int x, int y)
+    public bool inGrid(int length,int lenghtBarcoDerecha,int lenghtBarcoIzquierda, int dir, int x, int y)
     {
         switch (dir)
         {
@@ -40,26 +40,26 @@ public class GameHandler : MonoBehaviour
             //         return true;
             // break;
             case NORTH: //y-
-                if (y >= length - 1)// es menos 1 porque comienza desce cero
+                if (y >= length - 1 && x >= lenghtBarcoIzquierda  && x <= (9 - (lenghtBarcoDerecha)) )// es menos 1 porque comienza desce cero
                 {
                     return true;
                 }
                 break;
             case SOUTH: //y+
-                if (y <= (9 - (length - 1) ) )//nueve porque comienza desde cero..Descuento 1 al tamaño de barco porque comienza desde cero
+                if (y <= (9 - (length - 1) ) && x >= lenghtBarcoDerecha  && x <= (9 - (lenghtBarcoIzquierda)) )//nueve porque comienza desde cero..Descuento 1 al tamaño de barco porque comienza desde cero
                 {
                     return true;
                 }
                 break;
             case EAST:  //y+
-                if (x <= (9 - (length - 1) ) ) //si posicion en y es mayor a cero y si y es menor o igial a 10 menos tamaño del barco y x es mayor a cero y si y es menor o igual a nueve
+                if (x <= (9 - (length - 1) )   && y >= lenghtBarcoIzquierda  && y <= (9 - (lenghtBarcoDerecha - 1)) ) //si posicion en y es mayor a cero y si y es menor o igial a 10 menos tamaño del barco y x es mayor a cero y si y es menor o igual a nueve
                 {
                     return true;
                 }
                 break;
             
             case WEST:  //y-
-                if (x >= length - 1)                
+                if (x >= length - 1  && y >= lenghtBarcoDerecha  && y <= (9 - (lenghtBarcoIzquierda)) )                
                 {
                     return true;
                 }

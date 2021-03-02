@@ -7806,6 +7806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lengthBarco: 3
+  lenghtBarcoDerecha: 1
+  lenghtBarcoIzquierda: 0
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
@@ -8104,6 +8106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lengthBarco: 4
+  lenghtBarcoDerecha: 0
+  lenghtBarcoIzquierda: 0
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
@@ -11661,6 +11665,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lengthBarco: 3
+  lenghtBarcoDerecha: 0
+  lenghtBarcoIzquierda: 0
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
@@ -14654,6 +14660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lengthBarco: 2
+  lenghtBarcoDerecha: 0
+  lenghtBarcoIzquierda: 0
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
@@ -16811,6 +16819,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lengthBarco: 5
+  lenghtBarcoDerecha: 0
+  lenghtBarcoIzquierda: 1
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
