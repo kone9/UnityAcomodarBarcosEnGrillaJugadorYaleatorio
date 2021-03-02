@@ -6,7 +6,9 @@ public class CuadriculaDeColision : MonoBehaviour
 {
     
     GameHandler _GameHandler;
-
+    
+    public int Grilla_X_posicion = 0;
+    public int Grilla_Y_posicion = 0;
     private void Awake() {
         _GameHandler = FindObjectOfType<GameHandler>();
     }
