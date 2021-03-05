@@ -723,7 +723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ed2f56a311b3748a71e6d54f214f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grillaActual: {fileID: 0}
+  posiciones_X: 0
+  posiciones_Y: 0
+  grillaActual: {fileID: 2004972984697579205}
 --- !u!23 &19810355338262872
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14629,7 +14631,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02093339, y: 0.08363651, z: 0.03329386}
+  m_Size: {x: 0.05, y: 0.09, z: 0.03329386}
   m_Center: {x: 0, y: -0.02244768, z: 0.011018487}
 --- !u!54 &7937022880801363478
 Rigidbody:

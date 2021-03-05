@@ -26,12 +26,16 @@ public class ControladorDeJugador : MonoBehaviour
     {
         if(puedoMover)//si puedo mover el barco llamo a las funciones para mover tengo que presionar las teclas para que se mueva
         {
-            print("tendria que moverse");
+           
+            // print("tendria que moverse");
             foreach (Collider i in _BoxCollider)
             {
                 i.enabled = false;
             }
-            _MoverYrotar.moverBarcosPorCuadricula();
+        
+            StartCoroutine(MoverSoloUnaVes());
+            // _MoverYrotar.moverBarcosPorCuadricula();
+            // StartCoroutine(_MoverYrotar.moverBarcosPorCuadricula());
 
             if(Input.GetMouseButtonDown(1))
             {
@@ -42,17 +46,51 @@ public class ControladorDeJugador : MonoBehaviour
             {
                 DejarDeMover();
             }
+
+ 
         }
+        // if (Input.GetButtonDown("Fire1"))
+        // {
+        //     Ray ray;
+        //     RaycastHit rayHit;
+        //     float rayLength = 100f;
+
+        //     //어디를 터치했느냐
+        //     ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //     if(Physics.Raycast(ray, out rayHit, rayLength))
+        //     {
+        //         //배를 터치했다면
+        //         if (rayHit.transform.gameObject.tag == "boat")
+        //         {
+        //             print("Estoy arriba del BARCO " + rayHit.transform.gameObject.name);
+        //             //배의 위치 이동 및 회전을 담당하는 코루틴 호출
+        //             // StartCoroutine(MoverSoloUnaVes());
+        //             puedoMover = true;
+        //         }
+        //         if (rayHit.transform.gameObject.tag == "cuadricula")
+        //         {
+        //              print("Estoy arriba de la GRILLA " + rayHit.transform.gameObject.name);
+        //             _GameHandler.grillaActual = rayHit.transform.gameObject;
+        //         }
+        //     }
+        // }
     }
 
+    private IEnumerator MoverSoloUnaVes()
+    {
+        _MoverYrotar.moverBarcosPorCuadricula();
+        yield return null;
+    }
 
     private void OnMouseOver()//si el mouse esta arriba de la colision
-    {
-        if(Input.GetMouseButtonDown(0))//si presione el mouse
+    {   
+        if(Input.GetMouseButtonDown(0))
         {
-             puedoMover = true;//puedo mover
-        } 
+            puedoMover = true;//puedo mover
+        }
+
     }
+
 
     void DejarDeMover()//tengo que usar una corrutina para esperar un segundo sino se presiona el boton inmediatamente y hay un error de sincronización de botones
     {
@@ -61,7 +99,8 @@ public class ControladorDeJugador : MonoBehaviour
         {
             i.enabled = true;
         }
-        print("Ahora tendria que dejar de moverse");
+        // print("Ahora tendria que dejar de moverse");
 
     }
+    
 }

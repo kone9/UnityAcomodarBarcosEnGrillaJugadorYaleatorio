@@ -10,7 +10,11 @@ public class GameHandler : MonoBehaviour
     //luego es usado desde posicionarYrotar para posicionar el barco a donde esta el mouse arriba en ese 
     //posicion en concreto del la grilla
 
-    int[,] occupied = new int[10, 10];
+    int[,] occupied = new int[10, 10];//se usa como castillero imaginario
+    public int posiciones_X;
+    public int posiciones_Y;
+
+    //direcciones
     private const int EAST = 1;
     private const int WEST = 3;
     private const int SOUTH = 2;
@@ -18,29 +22,15 @@ public class GameHandler : MonoBehaviour
 
     public GameObject grillaActual;
 
+
+
     //si estoy dentro de la grilla solo puedo mover
     public bool inGrid(int length,int lenghtBarcoDerecha,int lenghtBarcoIzquierda, int dir, int x, int y)
     {
         switch (dir)
         {
-            // case EAST:  //y+
-            //     if (y >= 0 && y <= 10 - length && x >=0 && x <= 9)//si posicion en y es mayor a cero y si y es menor o igial a 10 menos tamaño del barco y x es mayor a cero y si y es menor o igual a nueve
-            //         return true;
-            // break;
-            // case WEST:  //y-
-            //     if (y >= length - 1 && y < 10 && x >= 0 && x <= 9)
-            //         return true;
-            // break;
-            // case SOUTH: //x+
-            //     if (x >= 0 && x <= 10 - length && y >= 0 && y <= 9)
-            //         return true;
-            // break;
-            // case NORTH: //x-
-            //     if (x >= length - 1 && x < 10 && y >= 0 && y <= 9)
-            //         return true;
-            // break;
             case NORTH: //y-
-                if (y >= length - 1 && x >= lenghtBarcoIzquierda  && x <= (9 - (lenghtBarcoDerecha)) )// es menos 1 porque comienza desce cero
+                if (y >= length - 1 && x >= lenghtBarcoIzquierda -1  && x <= (9 - (lenghtBarcoDerecha)) )// es menos 1 porque comienza desce cero
                 {
                     return true;
                 }
@@ -64,17 +54,108 @@ public class GameHandler : MonoBehaviour
                     return true;
                 }
                 break;
-            
-           
+        }
+
+        return false;
+    }
+
+
+
+    //para saber si la grilla esta ocupada devuelve verdadero o falso
+    public bool isOccupied(int length, int dir, int x, int y)
+    {
+        switch (dir)
+        {
+            case EAST:  //y+
+                for (int i = y; i < y + length; i++)
+                {
+                    if (occupied[x, i] == 1)
+                        return true;
+                }
+                break;
+            case WEST:  //y-
+                for (int i = y; i > y - length; i--)
+                {
+                    if (occupied[x, i] == 1)
+                        return true;
+                }
+                break;
+            case SOUTH: //x+
+                for (int i = x; i < x + length; i++)
+                {
+                    if (occupied[i, y] == 1)
+                        return true;
+                }
+                break;
+            // case NORTH: //x-
+            //     for (int i = x; i > x - length; i--)
+            //     {
+            //         if (occupied[i, y] == 1)
+            //             return true;
+            //     }
+            //     break;
+            case NORTH: //x-
+                // for (int i = y; i > y + length; i--)
+                // {
+                //     if (occupied[x, i] == 1)
+                //         return true;
+                // }
+                if (occupied[x, y] == 1)
+                    return true;
+                break;
         }
         return false;
+    }
+
+    //hacer que esta posición este ocupada
+    //el parametro value es usado en isOccupied si es 1 ese lugar esta ocupado si es 0 no lo esta
+    public void setOccupied(int length, int dir, int x, int y, int value)
+    {
+        switch (dir)
+        {
+            // case EAST:  //y+
+            //     for (int i = y; i < y + length; i++)
+            //     {
+            //         occupied[x, i] = value;
+            //     }
+            //     break;
+            // case WEST:  //y-
+            //     for (int i = y; i > y - length; i--)
+            //     {
+            //         occupied[x, i] = value;
+            //     }
+            //     break;
+            // case SOUTH: //x+
+            //     for (int i = x; i < x + length; i++)
+            //     {
+            //         print(y);
+            //         occupied[i, y] = value;
+            //     }
+            //     break;
+            // case NORTH: //x-
+            //     for (int i = x; i > x - length; i--)
+            //     {
+            //         print(y);
+            //         occupied[i, y] = value;
+            //     }
+            //     break;
+            case NORTH: //x-
+                // for (int i = y; i > y + length; i--)
+                // {
+                //     print(x);
+                //     occupied[x, i] = value;
+                // }
+
+                occupied[x, y] = value;
+                break;
+        }
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
