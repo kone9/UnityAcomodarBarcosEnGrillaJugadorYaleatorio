@@ -22,7 +22,7 @@ public class CuadriculaDeColision : MonoBehaviour
     //si el mouse entra a esta cuadricula
     private void OnMouseEnter()
     {
-        _GameHandler.grillaActual = this.gameObject;//guardo este gameobject
+        // _GameHandler.grillaActual = this.gameObject;//guardo este gameobject
         this.gameObject.GetComponent<MeshRenderer>().enabled = true;//activo la malla de vista
     }
 

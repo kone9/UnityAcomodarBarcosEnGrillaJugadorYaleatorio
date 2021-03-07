@@ -22,6 +22,8 @@ public class GameHandler : MonoBehaviour
 
     public GameObject grillaActual;
 
+    public LayerMask grillaParaColision;
+
 
 
     //si estoy dentro de la grilla solo puedo mover
@@ -152,6 +154,36 @@ public class GameHandler : MonoBehaviour
     }
 
 
+    void rayoParaDetectarSuelo()
+    {
+        Ray ray;
+        RaycastHit rayHit;
+        float rayLength = 100f;
+
+        //어디를 터치했느냐
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(Physics.Raycast(ray, out rayHit, rayLength,grillaParaColision))
+        {
+            //배를 터치했다면
+            // if (rayHit.transform.gameObject.tag == "boat")
+            // {
+            //     print("Estoy arriba del BARCO " + rayHit.transform.gameObject.name);
+            //     //배의 위치 이동 및 회전을 담당하는 코루틴 호출
+            //     // StartCoroutine(MoverSoloUnaVes());
+            //     puedoMover = true;
+            // }
+            // Debug.DrawLine(rayHit.transform.position,rayHit.transform.position * Vector3.down,Color.red,0.1f);
+            Debug.DrawRay(rayHit.transform.position,Vector3.down* -rayLength,Color.red,0.1f);
+            if (rayHit.transform.gameObject.CompareTag("cuadricula"))
+            {
+                print("Estoy arriba de la GRILLA " + rayHit.transform.gameObject.name);
+                grillaActual = rayHit.transform.gameObject;
+                // grillaActual.GetComponent<MeshRenderer>().enabled = true;
+            }
+           
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -161,6 +193,6 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        rayoParaDetectarSuelo();
     }
 }

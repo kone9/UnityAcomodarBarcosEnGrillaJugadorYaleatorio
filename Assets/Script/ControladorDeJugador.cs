@@ -9,6 +9,13 @@ public class ControladorDeJugador : MonoBehaviour
     bool puedoMover = false;
     public BoxCollider[] _BoxCollider;
 
+    //para que los barcos no se choquen
+    public BoxCollider[] overlappers;
+    public LayerMask isOverlapper;
+
+
+  
+    Vector3 startPos;
 
     GameHandler _GameHandler;
     private void Awake() {
@@ -86,6 +93,7 @@ public class ControladorDeJugador : MonoBehaviour
     {   
         if(Input.GetMouseButtonDown(0))
         {
+            startPos = transform.localPosition;
             puedoMover = true;//puedo mover
         }
 
@@ -99,8 +107,26 @@ public class ControladorDeJugador : MonoBehaviour
         {
             i.enabled = true;
         }
+
+        if(overlappers != null)
+		{
+			for (int i = 0; i < overlappers.Length; i++)
+			{
+                BoxCollider box = overlappers[i];
+                Collider[] collisions = Physics.OverlapBox(box.transform.position, box.bounds.size / 2, Quaternion.identity, isOverlapper);
+                if (collisions.Length > 1)
+                {
+                    Debug.Log("Hay Overlap");
+                    transform.localPosition = startPos;
+                }
+                else
+                    Debug.Log("No hay overlap");
+			}
+		}
         // print("Ahora tendria que dejar de moverse");
 
     }
+    
+
     
 }
