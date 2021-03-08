@@ -32,7 +32,7 @@ public class GameHandler : MonoBehaviour
         switch (dir)
         {
             case NORTH: //y-
-                if (y >= length - 1 && x >= lenghtBarcoIzquierda -1  && x <= (9 - (lenghtBarcoDerecha)) )// es menos 1 porque comienza desce cero
+                if (y >= length - 1 && x >= lenghtBarcoIzquierda  && x <= (9 - (lenghtBarcoDerecha)) )// es menos 1 porque comienza desce cero
                 {
                     return true;
                 }
@@ -44,7 +44,7 @@ public class GameHandler : MonoBehaviour
                 }
                 break;
             case EAST:  //y+
-                if (x <= (9 - (length - 1) )   && y >= lenghtBarcoIzquierda  && y <= (9 - (lenghtBarcoDerecha - 1)) ) //si posicion en y es mayor a cero y si y es menor o igial a 10 menos tamaño del barco y x es mayor a cero y si y es menor o igual a nueve
+                if (x <= (9 - (length - 1) )   && y >= lenghtBarcoIzquierda  && y <= (9 - (lenghtBarcoDerecha)) ) //si posicion en y es mayor a cero y si y es menor o igial a 10 menos tamaño del barco y x es mayor a cero y si y es menor o igual a nueve
                 {
                     return true;
                 }

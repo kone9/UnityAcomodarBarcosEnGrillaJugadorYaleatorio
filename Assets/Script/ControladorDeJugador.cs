@@ -8,7 +8,6 @@ public class ControladorDeJugador : MonoBehaviour
 
     bool puedoMover = false;
 
-    bool puedoRotar = true;
 
     public BoxCollider[] _BoxCollider;
 
@@ -16,7 +15,7 @@ public class ControladorDeJugador : MonoBehaviour
     public BoxCollider[] overlappers;
     public LayerMask isOverlapper;
 
-
+    int direccion = 0;
   
     Vector3 startPos;
 
@@ -50,7 +49,12 @@ public class ControladorDeJugador : MonoBehaviour
 
             if(Input.GetMouseButtonDown(1))
             {
-                _MoverYrotar.RotarBarco();
+                //si esta en la grilla
+                if(_GameHandler.inGrid(_MoverYrotar.lengthBarco,_MoverYrotar.lenghtBarcoDerecha,_MoverYrotar.lenghtBarcoIzquierda, (_MoverYrotar.direccion + 1) % 4,_MoverYrotar.X_posicion_imaginaria,_MoverYrotar.Y_posicion_imaginaria))
+                {
+                    //puedo rotar
+                    _MoverYrotar.RotarBarco();
+                }
             }
 
             if(Input.GetMouseButtonUp(0))
@@ -120,7 +124,6 @@ public class ControladorDeJugador : MonoBehaviour
                 Collider[] collisions = Physics.OverlapBox(box.transform.position, box.bounds.size / 2, Quaternion.identity, isOverlapper);
                 if (collisions.Length > 1)
                 {
-                    puedoRotar = false;
                     Debug.Log("Hay Overlap");
                     // transform.localPosition = startPos;
                     puedoMover = true;

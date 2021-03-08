@@ -68,7 +68,7 @@ public class MoverYrotar : MonoBehaviour
         //             _GameHandler.grillaActual.transform.position.z
         //         );
             //si esta adentro de la grilla
-            if ( _GameHandler.inGrid(lengthBarco, lenghtBarcoDerecha , lenghtBarcoIzquierda , direccion,X_posicion_imaginaria,Y_posicion_imaginaria) )
+            if ( _GameHandler.inGrid(lengthBarco, lenghtBarcoDerecha , lenghtBarcoIzquierda , direccion ,X_posicion_imaginaria,Y_posicion_imaginaria) )
             {
                 print("tendria que moverse");
                 // muevo el barco a la posicion de la grilla
