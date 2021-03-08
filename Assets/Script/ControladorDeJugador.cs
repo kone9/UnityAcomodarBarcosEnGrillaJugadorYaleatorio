@@ -42,7 +42,7 @@ public class ControladorDeJugador : MonoBehaviour
             {
                 i.enabled = false;
             }
-        
+            //hay un pequeño bug con el movimiento
             StartCoroutine(MoverSoloUnaVes());
             // _MoverYrotar.moverBarcosPorCuadricula();
             // StartCoroutine(_MoverYrotar.moverBarcosPorCuadricula());
@@ -99,6 +99,7 @@ public class ControladorDeJugador : MonoBehaviour
 
     private void OnMouseOver()//si el mouse esta arriba de la colision
     {   
+        //hay un pequeño bug con el movimiento
         if(Input.GetMouseButtonDown(0))
         {
             startPos = transform.localPosition;
