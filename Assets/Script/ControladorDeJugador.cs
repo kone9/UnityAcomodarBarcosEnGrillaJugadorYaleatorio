@@ -7,6 +7,9 @@ public class ControladorDeJugador : MonoBehaviour
     MoverYrotar _MoverYrotar;
 
     bool puedoMover = false;
+
+    bool puedoRotar = true;
+
     public BoxCollider[] _BoxCollider;
 
     //para que los barcos no se choquen
@@ -33,7 +36,8 @@ public class ControladorDeJugador : MonoBehaviour
     {
         if(puedoMover)//si puedo mover el barco llamo a las funciones para mover tengo que presionar las teclas para que se mueva
         {
-           
+            
+            
             // print("tendria que moverse");
             foreach (Collider i in _BoxCollider)
             {
@@ -116,11 +120,17 @@ public class ControladorDeJugador : MonoBehaviour
                 Collider[] collisions = Physics.OverlapBox(box.transform.position, box.bounds.size / 2, Quaternion.identity, isOverlapper);
                 if (collisions.Length > 1)
                 {
+                    puedoRotar = false;
                     Debug.Log("Hay Overlap");
-                    transform.localPosition = startPos;
+                    // transform.localPosition = startPos;
+                    puedoMover = true;
                 }
                 else
+                {
+                    puedoMover = false;
+                    // puedoRotar = true;
                     Debug.Log("No hay overlap");
+                }
 			}
 		}
         // print("Ahora tendria que dejar de moverse");
