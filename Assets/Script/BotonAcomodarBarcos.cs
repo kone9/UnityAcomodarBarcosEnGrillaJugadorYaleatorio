@@ -7,6 +7,8 @@ public class BotonAcomodarBarcos : MonoBehaviour
      GameObject[] barcos;
     GameObject[] cuadriculas;
 
+    GameHandler _GameHandler;
+
 
     public int cantidadNumeros = 5;
     public int rangoNumeros = 10;
@@ -16,6 +18,7 @@ public class BotonAcomodarBarcos : MonoBehaviour
     {
         barcos = GameObject.FindGameObjectsWithTag("boat");//busca todos los barcos
         cuadriculas = GameObject.FindGameObjectsWithTag("cuadricula");
+        _GameHandler = FindObjectOfType<GameHandler>();
         // listaDeNumeros = new int[cantidadNumerosAletorios];
     }
 
@@ -78,11 +81,41 @@ public class BotonAcomodarBarcos : MonoBehaviour
         }
         for (int i = 0; i < barcos.Length; i++)
         {
+
             barcos[i].transform.position = new Vector3(
                 cuadriculas[numeros[i]].transform.position.x,
                 barcos[i].transform.position.y,
                 cuadriculas[numeros[i]].transform.position.z
             );
+            int rotacionAleatorio = Random.Range(1,4);
+            barcos[i].transform.Rotate(new Vector3(0,0,90 * rotacionAleatorio),Space.Self);
+
+            /////////////////////////////////////////////////////////////
+            ///Repito hasta que todo este en la grilla/////////////////
+            while(
+                !_GameHandler.inGrid
+                    (
+                        barcos[i].GetComponent<MoverYrotar>().lengthBarco,
+                        barcos[i].GetComponent<MoverYrotar>().lenghtBarcoDerecha,
+                        barcos[i].GetComponent<MoverYrotar>().lenghtBarcoIzquierda,
+                        barcos[i].GetComponent<MoverYrotar>().direccion,
+                        barcos[i].GetComponent<MoverYrotar>().X_posicion_imaginaria,
+                        barcos[i].GetComponent<MoverYrotar>().Y_posicion_imaginaria
+                    )
+                )
+            {   
+                int[] numerosNuevosAleatorios = CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
+                int rotacionAleatorioDos = Random.Range(1,4);
+                barcos[i].transform.Rotate(new Vector3(0,0,90 * rotacionAleatorioDos),Space.Self);    
+
+                barcos[i].transform.position = new Vector3(
+                    cuadriculas[numerosNuevosAleatorios[i]].transform.position.x,
+                    barcos[i].transform.position.y,
+                    cuadriculas[numerosNuevosAleatorios[i]].transform.position.z
+                );
+            }
+            
+            ////////////////////////////////////////////////////////
             
         }
     }
