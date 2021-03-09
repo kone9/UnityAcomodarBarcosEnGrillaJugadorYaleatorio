@@ -10,9 +10,11 @@ public class BotonAcomodarBarcos : MonoBehaviour
     GameHandler _GameHandler;
 
 
+
     public int cantidadNumeros = 5;
     public int rangoNumeros = 10;
-    public List<int> listaDeNumeros = new List<int>();
+    public List<int> listaDeNumeros = new List<int>();//para listar los barcos
+
 
     private void Awake()
     {
@@ -70,112 +72,99 @@ public class BotonAcomodarBarcos : MonoBehaviour
 
     public void AcomodarBarcosDeformaAleatoria()
     {
-        listaDeNumeros.Clear();
-        cantidadNumeros =  barcos.Length;
-        rangoNumeros = cuadriculas.Length;
-        int[] numeros = CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
+        StartCoroutine("PosicionarBarcoAleatoriamente");
+        
+        // listaDeNumeros.Clear();
+        // cantidadNumeros =  barcos.Length;
+        // rangoNumeros = cuadriculas.Length;
+        // int[] numeros = CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
 
-        foreach (int i in numeros)
-        {
-            listaDeNumeros.Add(i);
-        }
-        for (int i = 0; i < barcos.Length; i++)
-        {
+        // foreach (int i in numeros)
+        // {
+        //     listaDeNumeros.Add(i);
+        // }
 
-            barcos[i].transform.position = new Vector3(
-                cuadriculas[numeros[i]].transform.position.x,
-                barcos[i].transform.position.y,
-                cuadriculas[numeros[i]].transform.position.z
-            );
-            int rotacionAleatorio = Random.Range(1,4);
-            barcos[i].transform.Rotate(new Vector3(0,0,90 * rotacionAleatorio),Space.Self);
+        
 
-            /////////////////////////////////////////////////////////////
-            ///Repito hasta que todo este en la grilla/////////////////
-            while(
-                !_GameHandler.inGrid
-                    (
-                        barcos[i].GetComponent<MoverYrotar>().lengthBarco,
-                        barcos[i].GetComponent<MoverYrotar>().lenghtBarcoDerecha,
-                        barcos[i].GetComponent<MoverYrotar>().lenghtBarcoIzquierda,
-                        barcos[i].GetComponent<MoverYrotar>().direccion,
-                        barcos[i].GetComponent<MoverYrotar>().X_posicion_imaginaria,
-                        barcos[i].GetComponent<MoverYrotar>().Y_posicion_imaginaria
-                    )
-                )
-            {   
-                int[] numerosNuevosAleatorios = CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
-                int rotacionAleatorioDos = Random.Range(1,4);
-                barcos[i].transform.Rotate(new Vector3(0,0,90 * rotacionAleatorioDos),Space.Self);    
 
-                barcos[i].transform.position = new Vector3(
-                    cuadriculas[numerosNuevosAleatorios[i]].transform.position.x,
-                    barcos[i].transform.position.y,
-                    cuadriculas[numerosNuevosAleatorios[i]].transform.position.z
-                );
-            }
+        /////////////////////////////////////////////////////////////////////////////////
+        // for (int i = 0; i < barcos.Length; i++)
+        // {
+
+        //     barcos[i].transform.position = new Vector3(
+        //         cuadriculas[numeros[i]].transform.position.x,
+        //         barcos[i].transform.position.y,
+        //         cuadriculas[numeros[i]].transform.position.z
+        //     );
+        //     int rotacionAleatorio = Random.Range(1,4);
+        //     barcos[i].transform.Rotate(new Vector3(0,0,90 * rotacionAleatorio),Space.Self);
+
+        //     /////////////////////////////////////////////////////////////
+        //     ///Repito hasta que todo este en la grilla/////////////////
+        //     while(
+        //         !_GameHandler.inGrid
+        //             (
+        //                 barcos[i].GetComponent<MoverYrotar>().lengthBarco,
+        //                 barcos[i].GetComponent<MoverYrotar>().lenghtBarcoDerecha,
+        //                 barcos[i].GetComponent<MoverYrotar>().lenghtBarcoIzquierda,
+        //                 barcos[i].GetComponent<MoverYrotar>().direccion,
+        //                 barcos[i].GetComponent<MoverYrotar>().X_posicion_imaginaria,
+        //                 barcos[i].GetComponent<MoverYrotar>().Y_posicion_imaginaria
+        //             )
+        //         )
+        //     {   
+        //         int[] numerosNuevosAleatorios = CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
+        //         int rotacionAleatorioDos = Random.Range(1,4);
+        //         barcos[i].transform.Rotate(new Vector3(0,0,90 * rotacionAleatorioDos),Space.Self);    
+
+        //         barcos[i].transform.position = new Vector3(
+        //             cuadriculas[numerosNuevosAleatorios[i]].transform.position.x,
+        //             barcos[i].transform.position.y,
+        //             cuadriculas[numerosNuevosAleatorios[i]].transform.position.z
+        //         );
+        //     }
             
-            ////////////////////////////////////////////////////////
+        //     ////////////////////////////////////////////////////////
             
-        }
+        // }
+        ////////////////////////////////////////////////////////////////////////////////
     }
 
-    public int[] CrearNumerosAleatoriosSinRepetir( int cantidadNumerosAletorios = 5, int rangoDeNumerosAleatorios = 10)
+    //prueba posicionar el barco mientras no este afuera
+    IEnumerator PosicionarBarcoAleatoriamente()
     {
         
-        int numeroAleatorio = 0;//variable que va a guardar el numero aleatorio
-        List<int> listaDeNumerosAleatorios = new List<int>();//nueva lista
-       
-        //While hasta que se complete la cantida de números aleatorios sin repetir
-        while(listaDeNumerosAleatorios.Count < cantidadNumerosAletorios)
-        {
-            numeroAleatorio = Random.Range(0,rangoDeNumerosAleatorios); //numero aleatorio en un rango por parametro
+        bool estaEngrilla = false;
+        GameObject barcoActual = barcos[3];
 
-            if (!listaDeNumerosAleatorios.Contains(numeroAleatorio) )//si ese número NO esta
-            {
-                listaDeNumerosAleatorios.Add(numeroAleatorio);//Agrego a la lista
-            }        
-        }
+        //tiro primera vez
+        int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
+                    
+        barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
         
-        int[] numerosParaRetornarAleatorios = new int[cantidadNumerosAletorios];//creo el arreglo provisorio
-        for (int i = 0; i < listaDeNumerosAleatorios.Count; i++) //mientras el tamaña sea menos a la lista
-        {
-            numerosParaRetornarAleatorios[i] = listaDeNumerosAleatorios[i];//guardo todos los valores
-        }
+        yield return new WaitForSeconds(0.5f);//prueba luego borrar
 
-        return numerosParaRetornarAleatorios; //retorno la lista de números    
+        //repetir sino esta en grilla hasta que este en grilla
+        while (!estaEngrilla)
+        {
+            //Sino esta en la grilla
+            if(!barcoActual.GetComponent<MoverYrotar>().EstaDentroDeLagrilla() )
+            {    
+                print("el barco no esta en la grilla");
+                numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( barcos.Length, cuadriculas.Length );
+                
+                //mover y rotar barcos automaticamente
+                barcos[3].GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
+
+                yield return new WaitForSeconds(0.5f);//prueba luego borrar
+            }
+            else
+            {
+                estaEngrilla = true;
+                // yield return null;
+            }
+            print("termino el bucle esta en grilla");
+        }    
     }
 
-
-
-    
-    // public void AcomodarBarcosFormaAleatoria()
-    // {
-        
-    //     int numeroAleatorio = 0;//variable que va a guardar el numero aleatorio
-
-    //     listaDeNumeros.Clear();//borro todo lo de la lista guardado antereriormente
-       
-    //     List<GameObject> posicionesNuevas = new List<GameObject>();
-    //     posicionesNuevas.Clear();
-
-    //     //While hasta que se complete la cantida de números aleatorios sin repetir
-    //     while(posicionesNuevas.Count < barcos.Length)
-    //     {
-    //         numeroAleatorio = Random.Range(0,cuadriculas.Length); //numero aleatorio en un rango
-
-    //         if(!posicionesNuevas.Contains(posicionesNuevas[numeroAleatorio]))//si ese número NO esta
-    //         {
-    //             listaDeNumeros.Add(numeroAleatorio);//Agrego a la lista
-    //         }        
-    //     }
-
-    //     //acomodo los barcos con las posiciones aleatorias
-    //     int contador = 0;
-    //     foreach (GameObject i in posicionesNuevas)
-    //     {
-    //         barcos[contador].transform.position = i.transform.position;
-    //     }  
-        
-    // }
 }

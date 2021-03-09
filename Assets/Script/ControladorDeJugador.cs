@@ -93,7 +93,7 @@ public class ControladorDeJugador : MonoBehaviour
 
     private IEnumerator MoverSoloUnaVes()
     {
-        _MoverYrotar.moverBarcosPorCuadricula();
+        _MoverYrotar.MoverBarcosPorCuadricula();
         yield return null;
     }
 

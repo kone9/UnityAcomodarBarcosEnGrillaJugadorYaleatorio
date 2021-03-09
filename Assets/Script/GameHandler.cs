@@ -153,6 +153,33 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    public int[] CrearNumerosAleatoriosSinRepetir( int cantidadNumerosAletorios = 5, int rangoDeNumerosAleatorios = 10)
+    {
+        
+        int numeroAleatorio = 0;//variable que va a guardar el numero aleatorio
+        List<int> listaDeNumerosAleatorios = new List<int>();//nueva lista
+       
+        //While hasta que se complete la cantida de números aleatorios sin repetir
+        while(listaDeNumerosAleatorios.Count < cantidadNumerosAletorios)
+        {
+            numeroAleatorio = Random.Range(0,rangoDeNumerosAleatorios); //numero aleatorio en un rango por parametro
+
+            if (!listaDeNumerosAleatorios.Contains(numeroAleatorio) )//si ese número NO esta
+            {
+                listaDeNumerosAleatorios.Add(numeroAleatorio);//Agrego a la lista
+            }        
+        }
+        
+        int[] numerosParaRetornarAleatorios = new int[cantidadNumerosAletorios];//creo el arreglo provisorio
+        for (int i = 0; i < listaDeNumerosAleatorios.Count; i++) //mientras el tamaña sea menos a la lista
+        {
+            numerosParaRetornarAleatorios[i] = listaDeNumerosAleatorios[i];//guardo todos los valores
+        }
+
+        return numerosParaRetornarAleatorios; //retorno la lista de números    
+    }
+
+
 
     void rayoParaDetectarSuelo()
     {
