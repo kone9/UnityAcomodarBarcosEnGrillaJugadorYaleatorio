@@ -21,6 +21,11 @@ public class MoverYrotar : MonoBehaviour
     public int Y_posicion_imaginaria = 0;
 
 
+    public BoxCollider[] _BoxCollider;
+    public BoxCollider[] overlappers;
+    public LayerMask isOverlapper;
+
+
 
     public void Awake() {
         _GameHandler = FindObjectOfType<GameHandler>();
@@ -96,9 +101,41 @@ public class MoverYrotar : MonoBehaviour
         }
     }
 
-    /// <summary>Para saber si el barco esta chocando con otros barcos</summary>
-    public bool EstaChocandoContraOtroBarco()
+    
+    // public bool EstaChocandoContraOtroBarco()
+    // {
+    //     return false;
+    // }
+
+    /// <summary>Para saber si el barco esta chocando con otros barcos  "BOOLEANO"</summary>
+    public bool EstaChocandoContraOtroBarco()//tengo que usar una corrutina para esperar un segundo sino se presiona el boton inmediatamente y hay un error de sincronización de botones
     {
-        return false;
+        bool estaColisionando = false;
+        // foreach (Collider i in _BoxCollider)
+        // {
+        //     i.enabled = true;
+        // }
+
+        if(overlappers != null)
+		{
+			for (int i = 0; i < overlappers.Length; i++)
+			{
+                BoxCollider box = overlappers[i];
+                Collider[] collisions = Physics.OverlapBox(box.transform.position, box.bounds.size / 2, Quaternion.identity, isOverlapper);
+                if (collisions.Length > 1)
+                {
+                    Debug.Log("Hay Overlap");
+                    // transform.localPosition = startPos;
+                    estaColisionando = true;
+                }
+                else
+                {
+                    estaColisionando = false;
+                    // puedoRotar = true;
+                    Debug.Log("No hay overlap");
+                }
+			}
+		}
+        return estaColisionando;
     }
 }

@@ -8577,8 +8577,15 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
-  X_posicion_imaginaria_anterior: 0
-  Y_posicion_imaginaria_anterior: 0
+  _BoxCollider:
+  - {fileID: 773839575}
+  - {fileID: 615531841}
+  overlappers:
+  - {fileID: 343252062}
+  - {fileID: 171802825}
+  isOverlapper:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &3775431755076644524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8872,8 +8879,13 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
-  X_posicion_imaginaria_anterior: 0
-  Y_posicion_imaginaria_anterior: 0
+  _BoxCollider:
+  - {fileID: 402125216}
+  overlappers:
+  - {fileID: 444645764}
+  isOverlapper:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &4043358817744893774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12429,8 +12441,13 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
-  X_posicion_imaginaria_anterior: 0
-  Y_posicion_imaginaria_anterior: 0
+  _BoxCollider:
+  - {fileID: 1680921867}
+  overlappers:
+  - {fileID: 316432171}
+  isOverlapper:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &5981584394859033845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15420,8 +15437,13 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
-  X_posicion_imaginaria_anterior: 0
-  Y_posicion_imaginaria_anterior: 0
+  _BoxCollider:
+  - {fileID: 1365163512}
+  overlappers:
+  - {fileID: 515448507}
+  isOverlapper:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &7937022880801363480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17588,8 +17610,15 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
-  X_posicion_imaginaria_anterior: 0
-  Y_posicion_imaginaria_anterior: 0
+  _BoxCollider:
+  - {fileID: 1266601397}
+  - {fileID: 1210169608}
+  overlappers:
+  - {fileID: 786972031}
+  - {fileID: 809934488}
+  isOverlapper:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &9165530525708959937
 MonoBehaviour:
   m_ObjectHideFlags: 0

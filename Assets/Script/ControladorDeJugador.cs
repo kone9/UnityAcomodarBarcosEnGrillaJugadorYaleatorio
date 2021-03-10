@@ -111,35 +111,47 @@ public class ControladorDeJugador : MonoBehaviour
 
     void DejarDeMover()//tengo que usar una corrutina para esperar un segundo sino se presiona el boton inmediatamente y hay un error de sincronización de botones
     {
-        puedoMover = false;
-        foreach (Collider i in _BoxCollider)
+        if(_MoverYrotar.EstaChocandoContraOtroBarco())
         {
-            i.enabled = true;
+            puedoMover = true;
         }
-
-        if(overlappers != null)
-		{
-			for (int i = 0; i < overlappers.Length; i++)
-			{
-                BoxCollider box = overlappers[i];
-                Collider[] collisions = Physics.OverlapBox(box.transform.position, box.bounds.size / 2, Quaternion.identity, isOverlapper);
-                if (collisions.Length > 1)
-                {
-                    Debug.Log("Hay Overlap");
-                    // transform.localPosition = startPos;
-                    puedoMover = true;
-                }
-                else
-                {
-                    puedoMover = false;
-                    // puedoRotar = true;
-                    Debug.Log("No hay overlap");
-                }
-			}
-		}
-        // print("Ahora tendria que dejar de moverse");
-
+        if(!_MoverYrotar.EstaChocandoContraOtroBarco())
+        {
+            puedoMover = false;
+        }
+        // print("Ahora tendria que dejar de moverse")
     }
+
+    // void DejarDeMover()//tengo que usar una corrutina para esperar un segundo sino se presiona el boton inmediatamente y hay un error de sincronización de botones
+    // {
+    //     puedoMover = false;
+    //     foreach (Collider i in _BoxCollider)
+    //     {
+    //         i.enabled = true;
+    //     }
+
+    //     if(overlappers != null)
+	// 	{
+	// 		for (int i = 0; i < overlappers.Length; i++)
+	// 		{
+    //             BoxCollider box = overlappers[i];
+    //             Collider[] collisions = Physics.OverlapBox(box.transform.position, box.bounds.size / 2, Quaternion.identity, isOverlapper);
+    //             if (collisions.Length > 1)
+    //             {
+    //                 Debug.Log("Hay Overlap");
+    //                 // transform.localPosition = startPos;
+    //                 puedoMover = true;
+    //             }
+    //             else
+    //             {
+    //                 puedoMover = false;
+    //                 // puedoRotar = true;
+    //                 Debug.Log("No hay overlap");
+    //             }
+	// 		}
+	// 	}
+    //     // print("Ahora tendria que dejar de moverse")
+    // }
     
 
     

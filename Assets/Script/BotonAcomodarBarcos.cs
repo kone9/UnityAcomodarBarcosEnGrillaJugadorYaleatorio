@@ -134,15 +134,15 @@ public class BotonAcomodarBarcos : MonoBehaviour
     //prueba posicionar el barco mientras no este afuera
     IEnumerator PosicionarBarcoAleatoriamente()
     {
+        bool estaEngrilla = false;
         for (int i = 0; i < barcos.Length; i++)
         {
-            bool estaEngrilla = false;
             GameObject barcoActual = barcos[i];
 
             //tiro primera vez
             int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
                         
-            barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[i]]);
+            barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
             
             this.GetComponent<Button>().interactable = false;
             yield return new WaitForSeconds(0.5f);//prueba luego borrar
@@ -157,18 +157,19 @@ public class BotonAcomodarBarcos : MonoBehaviour
                     numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( barcos.Length, cuadriculas.Length );
                     
                     //mover y rotar barcos automaticamente
-                    barcos[i].GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[i]]);
-                    this.GetComponent<Button>().interactable = false;
+                    barcos[i].GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
                     yield return new WaitForSeconds(0.5f);//prueba luego borrar
                 }
                 else
                 {
                     estaEngrilla = true;
-                    this.GetComponent<Button>().interactable = true;
+                    
                     // yield return null;
                 }
                 print("termino el bucle esta en grilla");
-            }    
+            }
+            
+            this.GetComponent<Button>().interactable = true;    
         }
         
     }
