@@ -184,25 +184,14 @@ public class GameHandler : MonoBehaviour
         RaycastHit rayHit;
         float rayLength = 100f;
 
-        //어디를 터치했느냐
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out rayHit, rayLength,grillaParaColision))
         {
-            //배를 터치했다면
-            // if (rayHit.transform.gameObject.tag == "boat")
-            // {
-            //     print("Estoy arriba del BARCO " + rayHit.transform.gameObject.name);
-            //     //배의 위치 이동 및 회전을 담당하는 코루틴 호출
-            //     // StartCoroutine(MoverSoloUnaVes());
-            //     puedoMover = true;
-            // }
-            // Debug.DrawLine(rayHit.transform.position,rayHit.transform.position * Vector3.down,Color.red,0.1f);
             Debug.DrawRay(rayHit.transform.position,Vector3.down* -rayLength,Color.red,0.1f);
             if (rayHit.transform.gameObject.CompareTag("cuadricula"))
             {
                 print("Estoy arriba de la GRILLA " + rayHit.transform.gameObject.name);
                 grillaActual = rayHit.transform.gameObject;
-                // grillaActual.GetComponent<MeshRenderer>().enabled = true;
             }
            
         }
