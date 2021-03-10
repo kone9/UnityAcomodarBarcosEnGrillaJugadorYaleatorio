@@ -155,8 +155,7 @@ public class MoverYrotar : MonoBehaviour
     /// <summary>Posiciona el barco aleatoriamente en un lugar de la grilla sin colisionar con otros barcos</summary>
     public IEnumerator PosicionarBarcoAleatoriamenteSinColisionarConOtros()
     {   
-        //tiro primera vez
-        int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(5,10);             
+        //tiro primera vez           
         Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
         yield return new WaitForSeconds(0.1f);//prueba luego borrar
 
@@ -164,7 +163,6 @@ public class MoverYrotar : MonoBehaviour
         while (!EstaEngrilla_Y_NoEstaColisionandoConOtroBarco())
         { 
             print("el barco no esta en la grilla");
-            numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( 5, 10 );
             //mover y rotar barcos automaticamente
             Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
             yield return new WaitForSeconds(0.1f);//prueba luego borrar

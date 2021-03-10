@@ -152,7 +152,7 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-
+    //no lo uso pero importante para otros proyectos no borrar
     /// <summary>Crea una cantidad de numeros aleatorios sin repetir en un rango..Osea 5 numeros aleatorios entre 0 y 10 por defecto</summary>
     public int[] CrearNumerosAleatoriosSinRepetir( int cantidadNumerosAletorios = 5, int rangoDeNumerosAleatorios = 10)
     {
