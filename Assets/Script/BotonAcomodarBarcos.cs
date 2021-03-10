@@ -27,11 +27,11 @@ public class BotonAcomodarBarcos : MonoBehaviour
 
     public void AutoBoton()
     {
-        PosicionarBarcoAleatoriamente();
+        StartCoroutine("PosicionarBarcoAleatoriamente");
     }
 
     //prueba posicionar el barco mientras no este afuera
-    private void PosicionarBarcoAleatoriamente()
+    IEnumerator PosicionarBarcoAleatoriamente()
     {
         this.GetComponent<Button>().interactable = false;//no puedo tocar el boton
         
@@ -39,25 +39,9 @@ public class BotonAcomodarBarcos : MonoBehaviour
         {
             GameObject barcoActual = barcos[i];
 
-            StartCoroutine(barcoActual.GetComponent<MoverYrotar>().PosicionarBarcoAleatoriamenteSinColisionarConOtros());
-            // //tiro primera vez
-            // int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);             
-            // barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
-            // // barcoActual.GetComponent<MoverYrotar>().PosicionarBarcoAleatoriamenteSinColisionarConOtros();
-            // yield return new WaitForSeconds(0.1f);//prueba luego borrar
-
-            // // repetir sino esta en grilla y si esta colisionando con otro barco
-            // while (!barcoActual.GetComponent<MoverYrotar>().EstaEngrilla_Y_NoEstaColisionandoConOtroBarco())
-            // { 
-            //     print("el barco no esta en la grilla");
-            //     numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( barcos.Length, cuadriculas.Length );
-            //     //mover y rotar barcos automaticamente
-            //     barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
-            //     // barcoActual.GetComponent<MoverYrotar>().PosicionarBarcoAleatoriamenteSinColisionarConOtros();
-            //     yield return new WaitForSeconds(0.1f);//prueba luego borrar
-            // }      
+            StartCoroutine(barcoActual.GetComponent<MoverYrotar>().PosicionarBarcoAleatoriamenteSinColisionarConOtros());    
         }
-
+        yield return new WaitForSeconds(0.5f);
         this.GetComponent<Button>().interactable = true;//puedo volver a tocar el boton
         
     }
