@@ -91,7 +91,7 @@ public class MoverYrotar : MonoBehaviour
     /// <summary>Para saber si el barco esta dentro de la grilla</summary>
     public bool EstaDentroDeLagrilla()
     {
-        if (_GameHandler.inGrid(lengthBarco, lenghtBarcoDerecha , lenghtBarcoIzquierda , (direccion + 1) % 4 ,X_posicion_imaginaria,Y_posicion_imaginaria) )
+        if (_GameHandler.inGrid(lengthBarco, lenghtBarcoDerecha , lenghtBarcoIzquierda , direccion ,X_posicion_imaginaria,Y_posicion_imaginaria) )
         {
             return true;
         }
