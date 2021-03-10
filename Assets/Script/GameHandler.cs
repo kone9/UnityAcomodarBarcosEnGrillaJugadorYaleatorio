@@ -62,7 +62,6 @@ public class GameHandler : MonoBehaviour
     }
 
 
-
     //para saber si la grilla esta ocupada devuelve verdadero o falso
     public bool isOccupied(int length, int dir, int x, int y)
     {
@@ -178,8 +177,6 @@ public class GameHandler : MonoBehaviour
 
         return numerosParaRetornarAleatorios; //retorno la lista de números    
     }
-
-
 
     void rayoParaDetectarSuelo()
     {
