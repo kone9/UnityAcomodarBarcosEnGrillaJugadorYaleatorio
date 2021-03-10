@@ -26,8 +26,7 @@ public class ControladorDeJugador : MonoBehaviour
     void Update()
     {
         if(puedoMover)//si puedo mover el barco llamo a las funciones para mover tengo que presionar las teclas para que se mueva
-        {
-            
+        { 
             //hay un pequeño bug con el movimiento
             StartCoroutine(MoverSoloUnaVes());
 
@@ -72,7 +71,8 @@ public class ControladorDeJugador : MonoBehaviour
     {
         if(_MoverYrotar.EstaChocandoContraOtroBarco())
         {
-            puedoMover = true;
+            // puedoMover = true;
+            _MoverYrotar.PosicionarBarcoAleatoriamenteSinColisionarConOtros();
         }
         if(!_MoverYrotar.EstaChocandoContraOtroBarco())
         {

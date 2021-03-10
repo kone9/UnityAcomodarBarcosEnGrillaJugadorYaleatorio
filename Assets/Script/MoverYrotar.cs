@@ -6,6 +6,7 @@ public class MoverYrotar : MonoBehaviour
 {
 
     GameHandler _GameHandler;
+    GameObject[] cuadriculas;
 
     public int lengthBarco;//tamaño de arriba abajo del barco
 
@@ -31,6 +32,7 @@ public class MoverYrotar : MonoBehaviour
 
     public void Awake() {
         _GameHandler = FindObjectOfType<GameHandler>();
+        cuadriculas = GameObject.FindGameObjectsWithTag("cuadricula");
     }
 
     private void Start() {
@@ -73,7 +75,7 @@ public class MoverYrotar : MonoBehaviour
     }
 
 
-    /// <summary>mueve y rota los barcos de forma aleatoría</summary>
+    /// <summary>mueve y rota los barcos de forma aleatoría en una posición de la cuadricula</summary>
     public GameObject Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(GameObject cuadricula)
     {
                     
@@ -149,6 +151,24 @@ public class MoverYrotar : MonoBehaviour
         {
             return false;
         }
+    }
+
+    /// <summary>Posiciona el barco aleatoriamente en un lugar de la grilla sin colisionar con otros barcos</summary>
+    public void PosicionarBarcoAleatoriamenteSinColisionarConOtros()
+    {   
+        //tiro primera vez
+        int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(5,10);             
+        Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
+
+        //repetir sino esta en grilla y si esta colisionando con otro barco
+        while (!EstaEngrilla_Y_NoEstaColisionandoConOtroBarco())
+        { 
+            print("el barco no esta en la grilla");
+            numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( 5, 10 );
+            //mover y rotar barcos automaticamente
+            Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
+        }      
+        
     }
 
 }
