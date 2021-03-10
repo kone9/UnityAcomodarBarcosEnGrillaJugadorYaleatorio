@@ -21,6 +21,8 @@ public class MoverYrotar : MonoBehaviour
     public int Y_posicion_imaginaria = 0;
 
 
+    public Vector3 startPos;//para cambiar la posición inicial
+
     public BoxCollider[] _BoxCollider;
     public BoxCollider[] overlappers;
     public LayerMask isOverlapper;
@@ -34,6 +36,7 @@ public class MoverYrotar : MonoBehaviour
     private void Start() {
 
     }
+
 
     /// <summary>Rota 90 grados el barco</summary>
     public void RotarBarco()
@@ -86,7 +89,7 @@ public class MoverYrotar : MonoBehaviour
 
         return this.gameObject;
     }
-
+    
 
     /// <summary>Para saber si el barco esta dentro de la grilla</summary>
     public bool EstaDentroDeLagrilla()
@@ -100,6 +103,7 @@ public class MoverYrotar : MonoBehaviour
             return false;
         }
     }
+
 
     /// <summary>Para saber si el barco esta chocando con otros barcos  "BOOLEANO"</summary>
     public bool EstaChocandoContraOtroBarco()//tengo que usar una corrutina para esperar un segundo sino se presiona el boton inmediatamente y hay un error de sincronización de botones
@@ -132,6 +136,7 @@ public class MoverYrotar : MonoBehaviour
 		}
         return estaColisionando;
     }
+
 
     /// <summary>Para saber si el barco "esta dentro" de la grilla y "NO" esta colisionando con un barco en simultaneo</summary>
     public bool EstaEngrilla_Y_NoEstaColisionandoConOtroBarco()

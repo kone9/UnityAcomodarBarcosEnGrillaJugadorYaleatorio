@@ -10,8 +10,6 @@ public class ControladorDeJugador : MonoBehaviour
 
 
     public BoxCollider[] _BoxCollider;
-  
-    Vector3 startPos;
 
     GameHandler _GameHandler;
     private void Awake() {
@@ -63,7 +61,7 @@ public class ControladorDeJugador : MonoBehaviour
         //hay un pequeño bug con el movimiento
         if(Input.GetMouseButtonDown(0))
         {
-            startPos = transform.localPosition;
+            _MoverYrotar.startPos = transform.localPosition;
             puedoMover = true;//puedo mover
         }
 
