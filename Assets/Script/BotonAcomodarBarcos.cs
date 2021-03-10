@@ -133,38 +133,41 @@ public class BotonAcomodarBarcos : MonoBehaviour
     //prueba posicionar el barco mientras no este afuera
     IEnumerator PosicionarBarcoAleatoriamente()
     {
-        
-        bool estaEngrilla = false;
-        GameObject barcoActual = barcos[3];
-
-        //tiro primera vez
-        int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
-                    
-        barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
-        
-        yield return new WaitForSeconds(0.5f);//prueba luego borrar
-
-        //repetir sino esta en grilla hasta que este en grilla
-        while (!estaEngrilla)
+        for (int i = 0; i < barcos.Length; i++)
         {
-            //Sino esta en la grilla
-            if(!barcoActual.GetComponent<MoverYrotar>().EstaDentroDeLagrilla() )
-            {    
-                print("el barco no esta en la grilla");
-                numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( barcos.Length, cuadriculas.Length );
-                
-                //mover y rotar barcos automaticamente
-                barcos[3].GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
+            bool estaEngrilla = false;
+            GameObject barcoActual = barcos[i];
 
-                yield return new WaitForSeconds(0.5f);//prueba luego borrar
-            }
-            else
+            //tiro primera vez
+            int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
+                        
+            barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
+            
+            yield return new WaitForSeconds(0.5f);//prueba luego borrar
+
+            //repetir sino esta en grilla hasta que este en grilla
+            while (!estaEngrilla)
             {
-                estaEngrilla = true;
-                // yield return null;
-            }
-            print("termino el bucle esta en grilla");
-        }    
+                //Sino esta en la grilla
+                if(!barcoActual.GetComponent<MoverYrotar>().EstaDentroDeLagrilla() )
+                {    
+                    print("el barco no esta en la grilla");
+                    numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( barcos.Length, cuadriculas.Length );
+                    
+                    //mover y rotar barcos automaticamente
+                    barcos[i].GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
+
+                    yield return new WaitForSeconds(0.5f);//prueba luego borrar
+                }
+                else
+                {
+                    estaEngrilla = true;
+                    // yield return null;
+                }
+                print("termino el bucle esta en grilla");
+            }    
+        }
+        
     }
 
 }
