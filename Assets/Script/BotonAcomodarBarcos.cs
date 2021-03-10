@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BotonAcomodarBarcos : MonoBehaviour
 {
@@ -141,8 +142,9 @@ public class BotonAcomodarBarcos : MonoBehaviour
             //tiro primera vez
             int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
                         
-            barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
+            barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[i]]);
             
+            this.GetComponent<Button>().interactable = false;
             yield return new WaitForSeconds(0.5f);//prueba luego borrar
 
             //repetir sino esta en grilla hasta que este en grilla
@@ -155,13 +157,14 @@ public class BotonAcomodarBarcos : MonoBehaviour
                     numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( barcos.Length, cuadriculas.Length );
                     
                     //mover y rotar barcos automaticamente
-                    barcos[i].GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
-
+                    barcos[i].GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[i]]);
+                    this.GetComponent<Button>().interactable = false;
                     yield return new WaitForSeconds(0.5f);//prueba luego borrar
                 }
                 else
                 {
                     estaEngrilla = true;
+                    this.GetComponent<Button>().interactable = true;
                     // yield return null;
                 }
                 print("termino el bucle esta en grilla");
