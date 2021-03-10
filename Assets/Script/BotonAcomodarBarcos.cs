@@ -138,9 +138,9 @@ public class BotonAcomodarBarcos : MonoBehaviour
         // bool estaEngrilla = false;
         // bool estaColsionandoConbarco = false;
         
-        // for (int i = 0; i < barcos.Length; i++)
-        // {
-            GameObject barcoActual = barcos[barcoEleguido];
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject barcoActual = barcos[i];
 
             //tiro primera vez
             int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);
@@ -173,7 +173,7 @@ public class BotonAcomodarBarcos : MonoBehaviour
                 // }
                 print("termino el bucle esta en grilla");
             }      
-        // }
+        }
 
         this.GetComponent<Button>().interactable = true;//puedo volver a tocar el boton
         

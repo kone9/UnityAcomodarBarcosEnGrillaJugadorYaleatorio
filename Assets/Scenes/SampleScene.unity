@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15dbc2baf0b7b744b59ed127493e1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barcoEleguido: 3
+  barcoEleguido: 2
   cantidadNumeros: 5
   rangoNumeros: 10
   listaDeNumeros: 
