@@ -25,6 +25,7 @@ public class ControladorDeJugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(puedoMover)//si puedo mover el barco llamo a las funciones para mover tengo que presionar las teclas para que se mueva
         { 
             //hay un pequeño bug con el movimiento
@@ -44,10 +45,11 @@ public class ControladorDeJugador : MonoBehaviour
             {
                 DejarDeMover();
             }
-
- 
         }
+
     }
+
+
 
     private IEnumerator MoverSoloUnaVes()
     {
@@ -71,13 +73,12 @@ public class ControladorDeJugador : MonoBehaviour
     {
         if(_MoverYrotar.EstaChocandoContraOtroBarco())
         {
-            // puedoMover = true;
-            _MoverYrotar.PosicionarBarcoAleatoriamenteSinColisionarConOtros();
-        }
-        if(!_MoverYrotar.EstaChocandoContraOtroBarco())
-        {
             puedoMover = false;
+            StartCoroutine(_MoverYrotar.PosicionarBarcoAleatoriamenteSinColisionarConOtros());
+            // _MoverYrotar.PosicionarBarcoAleatoriamenteSinColisionarConOtros();
         }
+        puedoMover = false;
+        
         // print("Ahora tendria que dejar de moverse")
     }
 

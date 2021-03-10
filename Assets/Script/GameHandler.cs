@@ -152,6 +152,8 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+
+    /// <summary>Crea una cantidad de numeros aleatorios sin repetir en un rango..Osea 5 numeros aleatorios entre 0 y 10 por defecto</summary>
     public int[] CrearNumerosAleatoriosSinRepetir( int cantidadNumerosAletorios = 5, int rangoDeNumerosAleatorios = 10)
     {
         
@@ -190,7 +192,7 @@ public class GameHandler : MonoBehaviour
             Debug.DrawRay(rayHit.transform.position,Vector3.down* -rayLength,Color.red,0.1f);
             if (rayHit.transform.gameObject.CompareTag("cuadricula"))
             {
-                print("Estoy arriba de la GRILLA " + rayHit.transform.gameObject.name);
+                // print("Estoy arriba de la GRILLA " + rayHit.transform.gameObject.name);
                 grillaActual = rayHit.transform.gameObject;
             }
            

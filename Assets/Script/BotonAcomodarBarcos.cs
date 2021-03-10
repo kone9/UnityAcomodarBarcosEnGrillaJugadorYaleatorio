@@ -25,6 +25,11 @@ public class BotonAcomodarBarcos : MonoBehaviour
         // listaDeNumeros = new int[cantidadNumerosAletorios];
     }
 
+    public void AutoBoton()
+    {
+        StartCoroutine("PosicionarBarcoAleatoriamente");
+    }
+
     //prueba posicionar el barco mientras no este afuera
     IEnumerator PosicionarBarcoAleatoriamente()
     {
@@ -36,19 +41,19 @@ public class BotonAcomodarBarcos : MonoBehaviour
 
             //tiro primera vez
             int[] numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir(barcos.Length,cuadriculas.Length);             
-            barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
-            
-            yield return new WaitForSeconds(0.5f);//prueba luego borrar
+            barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
+            // barcoActual.GetComponent<MoverYrotar>().PosicionarBarcoAleatoriamenteSinColisionarConOtros();
+            yield return new WaitForSeconds(0.1f);//prueba luego borrar
 
-            //repetir sino esta en grilla y si esta colisionando con otro barco
+            // repetir sino esta en grilla y si esta colisionando con otro barco
             while (!barcoActual.GetComponent<MoverYrotar>().EstaEngrilla_Y_NoEstaColisionandoConOtroBarco())
             { 
                 print("el barco no esta en la grilla");
                 numeros = _GameHandler.CrearNumerosAleatoriosSinRepetir( barcos.Length, cuadriculas.Length );
                 //mover y rotar barcos automaticamente
-                barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[numeros[0]]);
-                    
-                yield return new WaitForSeconds(0.5f);//prueba luego borrar
+                barcoActual.GetComponent<MoverYrotar>().Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
+                // barcoActual.GetComponent<MoverYrotar>().PosicionarBarcoAleatoriamenteSinColisionarConOtros();
+                yield return new WaitForSeconds(0.1f);//prueba luego borrar
             }      
         }
 
