@@ -91,7 +91,7 @@ public class MoverYrotar : MonoBehaviour
     /// <summary>Para saber si el barco esta dentro de la grilla</summary>
     public bool EstaDentroDeLagrilla()
     {
-        if (_GameHandler.inGrid(lengthBarco, lenghtBarcoDerecha , lenghtBarcoIzquierda , direccion ,X_posicion_imaginaria,Y_posicion_imaginaria) )
+        if (_GameHandler.inGrid(lengthBarco, lenghtBarcoDerecha , lenghtBarcoIzquierda , (direccion + 1) % 4 ,X_posicion_imaginaria,Y_posicion_imaginaria) )
         {
             return true;
         }
@@ -100,12 +100,6 @@ public class MoverYrotar : MonoBehaviour
             return false;
         }
     }
-
-    
-    // public bool EstaChocandoContraOtroBarco()
-    // {
-    //     return false;
-    // }
 
     /// <summary>Para saber si el barco esta chocando con otros barcos  "BOOLEANO"</summary>
     public bool EstaChocandoContraOtroBarco()//tengo que usar una corrutina para esperar un segundo sino se presiona el boton inmediatamente y hay un error de sincronización de botones
@@ -138,4 +132,18 @@ public class MoverYrotar : MonoBehaviour
 		}
         return estaColisionando;
     }
+
+    /// <summary>Para saber si el barco "esta dentro" de la grilla y "NO" esta colisionando con un barco en simultaneo</summary>
+    public bool EstaEngrilla_Y_NoEstaColisionandoConOtroBarco()
+    {
+        if(EstaDentroDeLagrilla() && !EstaChocandoContraOtroBarco())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

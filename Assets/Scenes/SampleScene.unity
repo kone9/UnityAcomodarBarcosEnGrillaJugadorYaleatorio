@@ -405,6 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15dbc2baf0b7b744b59ed127493e1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barcoEleguido: 3
   cantidadNumeros: 5
   rangoNumeros: 10
   listaDeNumeros: 
@@ -8536,6 +8537,7 @@ GameObject:
   - component: {fileID: 3775431755076644522}
   - component: {fileID: 3775431755076644524}
   - component: {fileID: 3775431755076644523}
+  - component: {fileID: 3775431755076644521}
   m_Layer: 0
   m_Name: submarino
   m_TagString: boat
@@ -8543,6 +8545,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &3775431755076644521
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3775431755076644520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.072630875, y: 0.11875834, z: 0.1}
+  m_Center: {x: 0.027198775, y: -0.049195684, z: 0.003064555}
 --- !u!54 &3775431755076644522
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8581,11 +8596,10 @@ MonoBehaviour:
   - {fileID: 773839575}
   - {fileID: 615531841}
   overlappers:
-  - {fileID: 343252062}
-  - {fileID: 171802825}
+  - {fileID: 3775431755076644521}
   isOverlapper:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &3775431755076644524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8601,12 +8615,6 @@ MonoBehaviour:
   _BoxCollider:
   - {fileID: 773839575}
   - {fileID: 615531841}
-  overlappers:
-  - {fileID: 343252062}
-  - {fileID: 171802825}
-  isOverlapper:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!33 &3835875913349687367
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8900,11 +8908,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BoxCollider:
   - {fileID: 402125216}
-  overlappers:
-  - {fileID: 444645764}
-  isOverlapper:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &4058787868638102436
 GameObject:
   m_ObjectHideFlags: 0
@@ -12462,11 +12465,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BoxCollider:
   - {fileID: 1680921867}
-  overlappers:
-  - {fileID: 316432171}
-  isOverlapper:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &6026788461002525972
 GameObject:
   m_ObjectHideFlags: 0
@@ -15458,11 +15456,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BoxCollider:
   - {fileID: 1365163512}
-  overlappers:
-  - {fileID: 515448507}
-  isOverlapper:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!33 &7986537429840204072
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17574,7 +17567,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08096449, y: 0.21284989, z: 0.05125111}
+  m_Size: {x: 0.08096449, y: 0.21284989, z: 0.1}
   m_Center: {x: -0.024377992, y: -0.09107398, z: 0.018114937}
 --- !u!54 &9165530525708959935
 Rigidbody:
@@ -17614,8 +17607,7 @@ MonoBehaviour:
   - {fileID: 1266601397}
   - {fileID: 1210169608}
   overlappers:
-  - {fileID: 786972031}
-  - {fileID: 809934488}
+  - {fileID: 9165530525708959934}
   isOverlapper:
     serializedVersion: 2
     m_Bits: 512
@@ -17634,12 +17626,6 @@ MonoBehaviour:
   _BoxCollider:
   - {fileID: 786972031}
   - {fileID: 809934488}
-  overlappers:
-  - {fileID: 786972031}
-  - {fileID: 809934488}
-  isOverlapper:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!23 &9167597463908726913
 MeshRenderer:
   m_ObjectHideFlags: 0

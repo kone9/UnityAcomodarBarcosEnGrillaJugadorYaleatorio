@@ -30,16 +30,8 @@ public class ControladorDeJugador : MonoBehaviour
         if(puedoMover)//si puedo mover el barco llamo a las funciones para mover tengo que presionar las teclas para que se mueva
         {
             
-            
-            // print("tendria que moverse");
-            // foreach (Collider i in _BoxCollider)
-            // {
-            //     i.enabled = false;
-            // }
             //hay un pequeño bug con el movimiento
             StartCoroutine(MoverSoloUnaVes());
-            // _MoverYrotar.moverBarcosPorCuadricula();
-            // StartCoroutine(_MoverYrotar.moverBarcosPorCuadricula());
 
             if(Input.GetMouseButtonDown(1))
             {
