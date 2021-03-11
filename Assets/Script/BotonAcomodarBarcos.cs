@@ -35,7 +35,7 @@ public class BotonAcomodarBarcos : MonoBehaviour
     {
         this.GetComponent<Button>().interactable = false;//no puedo tocar el boton
         
-        for (int i = 0; i < 3; i++)//Solo funciona hasta 3 tengo..No funciona portaAviones, ni submarino
+        for (int i = 0; i < 5; i++)//Solo funciona hasta 3 tengo..No funciona portaAviones, ni submarino
         {
             GameObject barcoActual = barcos[i];
 

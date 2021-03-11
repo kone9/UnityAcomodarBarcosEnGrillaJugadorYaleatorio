@@ -346,7 +346,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 222778115}
-        m_MethodName: AcomodarBarcosDeformaAleatoria
+        m_MethodName: AutoBoton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8537,7 +8537,6 @@ GameObject:
   - component: {fileID: 3775431755076644522}
   - component: {fileID: 3775431755076644524}
   - component: {fileID: 3775431755076644523}
-  - component: {fileID: 3775431755076644521}
   m_Layer: 0
   m_Name: submarino
   m_TagString: boat
@@ -8545,19 +8544,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &3775431755076644521
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3775431755076644520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.072630875, y: 0.11875834, z: 0.1}
-  m_Center: {x: 0.027198775, y: -0.049195684, z: 0.003064555}
 --- !u!54 &3775431755076644522
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8592,11 +8578,13 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
+  startPos: {x: 0, y: 0, z: 0}
   _BoxCollider:
   - {fileID: 773839575}
   - {fileID: 615531841}
   overlappers:
-  - {fileID: 3775431755076644521}
+  - {fileID: 343252062}
+  - {fileID: 171802825}
   isOverlapper:
     serializedVersion: 2
     m_Bits: 512
@@ -8612,9 +8600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe5d78ca2e034c45a6e5b7a1da49fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BoxCollider:
-  - {fileID: 773839575}
-  - {fileID: 615531841}
 --- !u!33 &3835875913349687367
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8887,6 +8872,7 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
+  startPos: {x: 0, y: 0, z: 0}
   _BoxCollider:
   - {fileID: 402125216}
   overlappers:
@@ -8906,8 +8892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe5d78ca2e034c45a6e5b7a1da49fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BoxCollider:
-  - {fileID: 402125216}
 --- !u!1 &4058787868638102436
 GameObject:
   m_ObjectHideFlags: 0
@@ -12444,6 +12428,7 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
+  startPos: {x: 0, y: 0, z: 0}
   _BoxCollider:
   - {fileID: 1680921867}
   overlappers:
@@ -12463,8 +12448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe5d78ca2e034c45a6e5b7a1da49fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BoxCollider:
-  - {fileID: 1680921867}
 --- !u!1 &6026788461002525972
 GameObject:
   m_ObjectHideFlags: 0
@@ -15435,6 +15418,7 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
+  startPos: {x: 0, y: 0, z: 0}
   _BoxCollider:
   - {fileID: 1365163512}
   overlappers:
@@ -15454,8 +15438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe5d78ca2e034c45a6e5b7a1da49fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BoxCollider:
-  - {fileID: 1365163512}
 --- !u!33 &7986537429840204072
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17548,7 +17530,6 @@ GameObject:
   - component: {fileID: 9165530525708959935}
   - component: {fileID: 9165530525708959937}
   - component: {fileID: 9165530525708959936}
-  - component: {fileID: 9165530525708959934}
   m_Layer: 0
   m_Name: PortaAviones
   m_TagString: boat
@@ -17556,19 +17537,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &9165530525708959934
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9165530525708959933}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.08096449, y: 0.21284989, z: 0.1}
-  m_Center: {x: -0.024377992, y: -0.09107398, z: 0.018114937}
 --- !u!54 &9165530525708959935
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17603,11 +17571,13 @@ MonoBehaviour:
   direccion: 0
   X_posicion_imaginaria: 0
   Y_posicion_imaginaria: 0
+  startPos: {x: 0, y: 0, z: 0}
   _BoxCollider:
   - {fileID: 1266601397}
   - {fileID: 1210169608}
   overlappers:
-  - {fileID: 9165530525708959934}
+  - {fileID: 786972031}
+  - {fileID: 809934488}
   isOverlapper:
     serializedVersion: 2
     m_Bits: 512
@@ -17623,9 +17593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe5d78ca2e034c45a6e5b7a1da49fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BoxCollider:
-  - {fileID: 786972031}
-  - {fileID: 809934488}
 --- !u!23 &9167597463908726913
 MeshRenderer:
   m_ObjectHideFlags: 0

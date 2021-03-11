@@ -9,8 +9,6 @@ public class ControladorDeJugador : MonoBehaviour
     bool puedoMover = false;
 
 
-    public BoxCollider[] _BoxCollider;
-
     GameHandler _GameHandler;
     private void Awake() {
         _MoverYrotar = GetComponent<MoverYrotar>();

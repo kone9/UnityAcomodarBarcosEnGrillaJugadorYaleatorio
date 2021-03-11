@@ -110,10 +110,6 @@ public class MoverYrotar : MonoBehaviour
     public bool EstaChocandoContraOtroBarco()//tengo que usar una corrutina para esperar un segundo sino se presiona el boton inmediatamente y hay un error de sincronización de botones
     {
         bool estaColisionando = false;
-        // foreach (Collider i in _BoxCollider)
-        // {
-        //     i.enabled = true;
-        // }
 
         if(overlappers != null)
 		{
@@ -126,6 +122,7 @@ public class MoverYrotar : MonoBehaviour
                     Debug.Log("Hay Overlap");
                     // transform.localPosition = startPos;
                     estaColisionando = true;
+                    break;
                 }
                 else
                 {
