@@ -180,6 +180,7 @@ public class GameHandler : MonoBehaviour
         return numerosParaRetornarAleatorios; //retorno la lista de números    
     }
 
+
     void rayoParaDetectarSuelo()
     {
         Ray ray;
@@ -194,8 +195,7 @@ public class GameHandler : MonoBehaviour
             {
                 // print("Estoy arriba de la GRILLA " + rayHit.transform.gameObject.name);
                 grillaActual = rayHit.transform.gameObject;
-            }
-           
+            }   
         }
     }
 

@@ -28,9 +28,10 @@ public class BotonAcomodarBarcos : MonoBehaviour
     public void AutoBoton()
     {
         StartCoroutine("PosicionarBarcoAleatoriamente");
+        // PosicionarBarcoAleatoriamente();
     }
 
-    //prueba posicionar el barco mientras no este afuera
+    // // prueba posicionar el barco mientras no este afuera
     IEnumerator PosicionarBarcoAleatoriamente()
     {
         this.GetComponent<Button>().interactable = false;//no puedo tocar el boton
@@ -45,5 +46,19 @@ public class BotonAcomodarBarcos : MonoBehaviour
         this.GetComponent<Button>().interactable = true;//puedo volver a tocar el boton
         
     }
+
+    // void PosicionarBarcoAleatoriamente()
+    // {
+    //     this.GetComponent<Button>().interactable = false;//no puedo tocar el boton
+        
+    //     for (int i = 0; i < 3; i++)//Solo funciona hasta 3 tengo..No funciona portaAviones, ni submarino
+    //     {
+    //         GameObject barcoActual = barcos[i];
+
+    //         barcoActual.GetComponent<MoverYrotar>().PosicionarBarcoAleatoriamenteSinColisionarConOtros();    
+    //     }
+    //     this.GetComponent<Button>().interactable = true;//puedo volver a tocar el boton
+        
+    // }
 
 }

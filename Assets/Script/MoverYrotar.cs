@@ -142,11 +142,15 @@ public class MoverYrotar : MonoBehaviour
         if(EstaDentroDeLagrilla() && !EstaChocandoContraOtroBarco())
         {
             return true;
+            
         }
-        else
+        if(EstaDentroDeLagrilla() && EstaChocandoContraOtroBarco())
         {
             return false;
         }
+
+        return false;
+
     }
 
     /// <summary>Posiciona el barco aleatoriamente en un lugar de la grilla sin colisionar con otros barcos</summary>
@@ -154,6 +158,7 @@ public class MoverYrotar : MonoBehaviour
     {   
         //tiro primera vez           
         Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
+        // yield return new WaitForSeconds(0.01f);//prueba luego borrar
         yield return new WaitForSeconds(0.1f);//prueba luego borrar
 
         //repetir sino esta en grilla y si esta colisionando con otro barco
@@ -162,9 +167,27 @@ public class MoverYrotar : MonoBehaviour
             print("el barco no esta en la grilla");
             //mover y rotar barcos automaticamente
             Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
-            yield return new WaitForSeconds(0.1f);//prueba luego borrar
+            // yield return new WaitForSeconds(0.01f);//prueba luego borrar
+             yield return new WaitForSeconds(0.1f);//prueba luego borrar
+            // yield return null;
         }      
-        
     }
+
+    // public void PosicionarBarcoAleatoriamenteSinColisionarConOtros()
+    // {   
+    //     //tiro primera vez           
+    //     Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
+
+    //     //repetir sino esta en grilla y si esta colisionando con otro barco
+    //     while (!EstaEngrilla_Y_NoEstaColisionandoConOtroBarco())
+    //     { 
+    //         print("el barco no esta en la grilla");
+    //         //mover y rotar barcos automaticamente
+    //         Mover_Y_Rotar_Barcos_AutomaticamentePorCuadricula(cuadriculas[Random.Range(0,cuadriculas.Length - 1)]);
+    //         // yield return null;
+    //     }      
+    // }
+
+
 
 }
